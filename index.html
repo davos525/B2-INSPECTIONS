@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>B2 Inspections Springbrook 2025-2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8ff; margin: 0; padding: 0;}
+    .container { max-width: 1100px; margin: auto; padding: 20px;}
+    h1 { text-align: center; margin-bottom: 2em; }
+    .main-site { margin-bottom: 2.5em; border-bottom: 1px solid #ddd; padding-bottom: 2em;}
+    .main-site h2 { background: #f1f1f1; padding: 10px 0 10px 0.5em; margin: 0 0 1em 0; font-size: 1.25em;}
+    .subsite-card { background: #fff; border-radius: 8px; border: 1px solid #e2e2e2; padding: 1em; margin-bottom: 1.5em;}
+    .subsite-card h3 { margin: 0 0 0.5em 0;}
+    .task-list { list-style: none; padding: 0; margin: 1em 0 0 0;}
+    .task-list li { margin-bottom: 0.7em;}
+    .photo-section { margin-bottom: 0.8em;}
+    .photo-btn { display: inline-block; background: #1976d2; color: #fff; padding: 0.4em 1em; border-radius: 4px; cursor: pointer; margin-bottom: 0.5em; font-size: 0.95em; transition: background 0.2s;}
+    .photo-btn:hover { background: #005bb5;}
+    .site-photo { display: block; border-radius: 6px; margin-top: 0.3em; max-width: 100%; max-height: 180px;}
+    @media (max-width: 600px) {
+      .container { padding: 5px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>B2 Inspections Springbrook 2025-2026</h1>
+    <div id="sites-root"></div>
+  </div>
+  <script>
+    // 37 unique main/sub sites from your list
+    const sites = [
+      // Goomoolahra Day Use Area
+      {
+        main: "Goomoolahra Day Use Area",
+        sub: "Lookout - Goomoolahra Falls - Goomoolahra DUA",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and use black touch up paint were required"
+        ]
+      },
+      {
+        main: "Goomoolahra Day Use Area",
+        sub: "Lookout - Boojerahla - Goomoolahra DUA",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and use black touch up paint were required"
+        ]
+      },
+      {
+        main: "Goomoolahra Day Use Area",
+        sub: "EWTS - Bridge Concrete (track to Southern lookout)",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts"
+        ]
+      },
+      // Twin Falls Walking Track
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Bridge - Steel / Wooden - Twin Falls (Upper) - Twin Falls",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove debris from below bridge (subframe)",
+          "Clean between decking boards and around post bases",
+          "Clean balustrades, posts, of mould, fungus",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Bridge - Concrete - Zig-Zags - Twin Falls",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Remove rubbish below structure & repair steel cables where applicable and use black touch up paint where required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "EWTS - Bridge - Concrete (below Twin Falls)",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Clear any rubble on surface and unblock pipes where required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Bridge - Steel - Rush Creek (Lower) - Twin Falls",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Lookout - Bellaringa - Twin Falls (Aboriginal Names Sign)",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables & remove graffiti where applicable. Use touch up paint if required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Lookout - Tallaringa - Twin Falls",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables & remove graffiti where applicable. Use touch up paint if required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Lookout - Rudders - Twin Falls",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables & remove graffiti where applicable. Use touch up paint if required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Lookout - Wedge Bluff - Twin Falls",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables & remove graffiti where applicable. Use touch up paint if required"
+        ]
+      },
+      {
+        main: "Twin Falls Walking Track",
+        sub: "Bridge - Concrete - Blackfellow Falls - Twin Falls",
+        tasks: [
+          "Clear any debris on surface and unblock pipes where required"
+        ]
+      },
+      // Warrie Circuit
+      {
+        main: "Warrie Circuit",
+        sub: "EWTS -  Goomoolahra Falls causeway",
+        tasks: [
+          "Clear any rubble on surface and unblock pipes where required"
+        ]
+      },
+      // Best Of All Lookout
+      {
+        main: "Best Of All Lookout",
+        sub: "Lookout - Best of All - Best of All Lookout",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces"
+        ]
+      },
+      // Canyon Lookout
+      {
+        main: "Canyon Lookout",
+        sub: "Lookout - Canyon - Canyon Lookout",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces"
+        ]
+      },
+      // Information Centre
+      {
+        main: "Information Centre",
+        sub: "EWTS - Boardwalk and Lookout",
+        tasks: [
+          "Wire brush rust in posts, plates, remove rust, paint with rust proof under coat if required and cold gal paint",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces. (Awaiting funding approval for contractor to do the major repairs on the joist.)"
+        ]
+      },
+      // Purling Brook Falls Walking Track
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Bridge - Timber - Purling Brook Creek - Purling Brook",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Wire brush and clean rusted balustrade connector plate, paint with rustproof, gal paint",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces. Contractor has replaced adjoining fencing at this site after Jan 2024 storm event"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Bridge - Timber - Carricks Creek - Purling Brook  (Causeway)",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surfaces",
+          "Contractor has replaced adjoining fencing at this site after Jan 2024 storm event"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "EWTS - Bridge - Timber (over Carricks Creek)  Settlement DUA",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and use black touch up paint where required"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Lookout - Purling Brook Falls (East) - Purling Brook",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and use black touch up paint where required"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Bridge -  Steel Suspension - \"John Stacey\" - Purling Brook",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove any vegetation from around steel posts and footings and from around abutments",
+          "Remove debris build up from flood event",
+          "Re tension cabling and bolts where applicable",
+          "Engineering Report has identified many maintenance and repair issues that is estimated to cost $130,000"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "EWTS - Bridge - Timber / Steel (Waringa Track)",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove debris between decking, prep (sandpaper) and oil timber surface"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "EWTS - Bridge - Timber (Tanninaba Falls lower)",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove debris between decking, prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surface"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Bridge - Timber - Tanninaba Falls (Upper) - Purling Brook",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove debris between decking, prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surface"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Lookout - Tanninaba Falls - Purling Brook",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Fill in holes in viewing area surface - large holes washed out post flood event, require filling with roadbase",
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables & remove graffiti where applicable. Use touch up paint if required"
+        ]
+      },
+      {
+        main: "Purling Brook Falls Walking Track",
+        sub: "Lookout - Purling Brook Falls (West) - Purling Brook",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable, remove graffiti where applicable and use black touch up paint where required"
+        ]
+      },
+      // Great Walks Track System
+      {
+        main: "Great Walks Track System",
+        sub: "EWTS - Bridge Timber - GCCC Numinbah",
+        tasks: [
+          "Remove debris, prep (sandpaper) and oil timber surface"
+        ]
+      },
+      // Natural Bridge Walking Track
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "EWTS - Platform Viewing - Fig Tree",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove debris and fallen Hoop Pine tree from around the structure including from below the platform (subframe)",
+          "Clean between decking boards and around post bases",
+          "Clean balustrades, posts, of mould, fungus",
+          "Prep (sandpaper), remove graffiti, & repair steel cables where applicable or possible and oil timber surfaces",
+          "Complete assessment of Jan 2024 storm event damage",
+          "Gain quotes from contractors for repair works including replacement of steel post, fencing and reinstating rock drain under timber boardwalk"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "Bridge - Steel / Wooden (Lower) - N/Bridge",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove any new debris from Jan 2024 storm",
+          "Contractor completed cleaning, maintenance and Oiling task in Dec 2023 at a cost of $5250",
+          "Therefore, onsite works to focus on storm damage assessment only, including if large tree fall upstream of bridge requires cutting , so as to prevent future damage to the bridge during flash flooding events"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "Lookout - Outside Cave - N/Bridge",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Therefore, onsite works to focus on storm damage assessment such as checking for evident of timber rot, particularly under the structure",
+          "Remove debris between decking, prep (sandpaper), remove graffiti, & repair steel cables where applicable and oil timber surface"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "EWTS - Stairs & Handrail - Timber (cave entrance)",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove any new debris from Jan 2024 storm and use black touch up paint where required"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "EWTS - Lookout Onground - Inside Cave",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove any new debris from Jan 2024 storm and use black touch up paint where required",
+          "Assessment to include damaged retaining boards/concrete and pot holes from fast flowing water in the cave"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "Lookout - East of Arch - N/Bridge",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and oil timber surfaces"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "Bridge - Steel / Wooden (Upper) - N/Bridge",
+        tasks: [
+          "This structure had flash flooding around it in Jan 2024 storm event. Remove any new debris from Jan 2024 storm",
+          "Contractor completed cleaning, maintenance and Oiling task in Dec 2023 at a cost of $4450",
+          "Therefore, onsite works to focus on storm damage assessment only"
+        ]
+      },
+      {
+        main: "Natural Bridge Walking Track",
+        sub: "Lookout - West of Arch - N/Bridge",
+        tasks: [
+          "Prune around structure",
+          "Clear debris, soil from around posts",
+          "Prune to improve view where applicable with pole saw",
+          "Remove rubbish below structure with pool net pole",
+          "Repair steel cables were applicable and oil timber surfaces"
+        ]
+      }
+    ];
+
+    // Group by main site
+    const grouped = {};
+    sites.forEach((item, idx) => {
+      if (!grouped[item.main]) grouped[item.main] = [];
+      grouped[item.main].push({ ...item, id: idx });
+    });
+
+    // Helper: localStorage keys
+    function checkboxKey(subsiteId, idx) {
+      return `checkbox-${subsiteId}-${idx}`;
+    }
+    function allCompleteKey(subsiteId) {
+      return `all-complete-${subsiteId}`;
+    }
+    function photoKey(subsiteId) {
+      return `photo-${subsiteId}`;
+    }
+
+    // Load checkbox state
+    function loadCheckbox(subsiteId, idx) {
+      return localStorage.getItem(checkboxKey(subsiteId, idx)) === "true";
+    }
+    function saveCheckbox(subsiteId, idx, val) {
+      localStorage.setItem(checkboxKey(subsiteId, idx), val ? "true" : "false");
+    }
+    function loadAllComplete(subsiteId) {
+      return localStorage.getItem(allCompleteKey(subsiteId)) === "true";
+    }
+    function saveAllComplete(subsiteId, val) {
+      localStorage.setItem(allCompleteKey(subsiteId), val ? "true" : "false");
+    }
+    function loadPhoto(subsiteId) {
+      return localStorage.getItem(photoKey(subsiteId));
+    }
+    function savePhoto(subsiteId, base64) {
+      localStorage.setItem(photoKey(subsiteId), base64);
+    }
+
+    // Render
+    const root = document.getElementById('sites-root');
+    Object.keys(grouped).forEach(mainSite => {
+      const mainDiv = document.createElement('div');
+      mainDiv.className = 'main-site';
+      const h2 = document.createElement('h2');
+      h2.textContent = mainSite;
+      mainDiv.appendChild(h2);
+
+      grouped[mainSite].forEach(subsite => {
+        const card = document.createElement('div');
+        card.className = 'subsite-card';
+
+        // Subsite title
+        const h3 = document.createElement('h3');
+        h3.textContent = subsite.sub;
+        card.appendChild(h3);
+
+        // Photo section
+        const photoSection = document.createElement('div');
+        photoSection.className = 'photo-section';
+
+        const inputId = `photo-input-${subsite.id}`;
+        const photoInput = document.createElement('input');
+        photoInput.type = 'file';
+        photoInput.accept = 'image/*';
+        photoInput.id = inputId;
+        photoInput.style.display = 'none';
+
+        const label = document.createElement('label');
+        label.className = 'photo-btn';
+        label.setAttribute('for', inputId);
+        label.textContent = 'Add Photo';
+
+        const img = document.createElement('img');
+        img.className = 'site-photo';
+        img.style.display = 'none';
+
+        // Restore photo from storage
+        const savedPhoto = loadPhoto(subsite.id);
+        if (savedPhoto) {
+          img.src = savedPhoto;
+          img.style.display = 'block';
+          label.textContent = 'Change Photo';
+        }
+
+        photoInput.addEventListener('change', function(e) {
+          if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+              img.src = evt.target.result;
+              img.style.display = 'block';
+              label.textContent = 'Change Photo';
+              savePhoto(subsite.id, evt.target.result);
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        photoSection.appendChild(photoInput);
+        photoSection.appendChild(label);
+        photoSection.appendChild(img);
+
+        card.appendChild(photoSection);
+
+        // Task list
+        const ul = document.createElement('ul');
+        ul.className = 'task-list';
+        subsite.tasks.forEach((task, idx) => {
+          const li = document.createElement('li');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.id = `task-${subsite.id}-${idx}`;
+          checkbox.checked = loadCheckbox(subsite.id, idx);
+          const label = document.createElement('label');
+          label.setAttribute('for', checkbox.id);
+          label.textContent = ' ' + task;
+          checkbox.addEventListener('change', function() {
+            saveCheckbox(subsite.id, idx, this.checked);
+          });
+          li.appendChild(checkbox);
+          li.appendChild(label);
+          ul.appendChild(li);
+        });
+
+        // All complete checkbox
+        const completeLi = document.createElement('li');
+        const completeCheckbox = document.createElement('input');
+        completeCheckbox.type = 'checkbox';
+        completeCheckbox.id = `all-complete-${subsite.id}`;
+        completeCheckbox.dataset.locked = loadAllComplete(subsite.id) ? "true" : "false";
+        completeCheckbox.checked = loadAllComplete(subsite.id);
+        const completeLabel = document.createElement('label');
+        completeLabel.setAttribute('for', completeCheckbox.id);
+        completeLabel.textContent = ' All tasks complete';
+
+        // Only allow checking, not unchecking
+        completeCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+            this.dataset.locked = "true";
+            this.checked = true;
+            this.disabled = true;
+            saveAllComplete(subsite.id, true);
+          } else if(this.dataset.locked === "true") {
+            this.checked = true;
+          }
+        });
+
+        // If already locked, disable
+        if (completeCheckbox.checked) {
+          completeCheckbox.disabled = true;
+        }
+
+        completeLi.appendChild(completeCheckbox);
+        completeLi.appendChild(completeLabel);
+        ul.appendChild(completeLi);
+
+        card.appendChild(ul);
+        mainDiv.appendChild(card);
+      });
+      root.appendChild(mainDiv);
+    });
+  </script>
+</body>
+</html>
